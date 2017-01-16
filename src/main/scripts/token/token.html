@@ -36,7 +36,7 @@
             </div><!-- /.page-header -->
 
             <div class="row">
-                <div class="col-xs-12 list">
+                <div class="col-xs-12" ng-show="status.step === 1">
                     <div class="clearfix">
                         <div class="pull-right tableTools-container"></div>
                     </div>
@@ -92,7 +92,7 @@
                         </table>
                     </div>
                 </div>
-                <div class="col-xs-12 form" style="display: none">
+                <div class="col-xs-12"  ng-show="status.step === 2">
                     <div class="widget-box">
                         <div class="widget-header">
                             <h4 class="widget-title">Create token key</h4>
@@ -112,7 +112,7 @@
                                                 <i class="ace-icon fa fa-check bigger-110"></i>
                                                 Save
                                             </button>
-                                            <button class="btn btn-sm m-l-5" id="cancel">
+                                            <button class="btn btn-sm m-l-5" id="cancel" ng-click="changeView('back')">
                                                 <i class="ace-icon fa fa-close bigger-110"></i>
                                                 Cancel
                                             </button>
