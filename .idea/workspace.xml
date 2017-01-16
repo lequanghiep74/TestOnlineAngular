@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2478f153-b29a-4440-9b69-7bbf12b74a9f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/scripts/scoreboard/scoreboard.controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/scripts/scoreboard/scoreboard.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/scripts/scoreboard/scoreboard.state.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/index.html" afterPath="$PROJECT_DIR$/src/main/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scripts/component/navbar/navbar.html" afterPath="$PROJECT_DIR$/src/main/scripts/component/navbar/navbar.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -44,11 +40,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="scoreboard.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="scoreboard.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/scripts/scoreboard/scoreboard.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="26" lean-forward="true" selection-start-line="0" selection-start-column="26" selection-end-line="0" selection-end-column="26" />
+            <state relative-caret-position="187">
+              <caret line="11" column="52" lean-forward="true" selection-start-line="11" selection-start-column="52" selection-end-line="11" selection-end-column="52" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="navbar.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/scripts/component/navbar/navbar.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -105,7 +111,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/scripts/component/navbar/navbar.html" />
         <option value="$PROJECT_DIR$/src/main/scripts/component/footer/footer.html" />
         <option value="$PROJECT_DIR$/src/main/scripts/account/accout.controller.js" />
         <option value="$PROJECT_DIR$/src/main/scripts/account/account.html" />
@@ -141,6 +146,7 @@
         <option value="$PROJECT_DIR$/src/main/scripts/scoreboard/scoreboard.state.js" />
         <option value="$PROJECT_DIR$/src/main/scripts/scoreboard/scoreboard.controller.js" />
         <option value="$PROJECT_DIR$/src/main/scripts/scoreboard/scoreboard.html" />
+        <option value="$PROJECT_DIR$/src/main/scripts/component/navbar/navbar.html" />
       </list>
     </option>
   </component>
@@ -380,12 +386,12 @@
       <updated>1484571312055</updated>
       <workItem from="1484571313542" duration="357000" />
       <workItem from="1484571685063" duration="4315000" />
-      <workItem from="1484576046934" duration="3521000" />
+      <workItem from="1484576046934" duration="3596000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8193000" />
+    <option name="totallyTimeSpent" value="8268000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -478,6 +484,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5423">
           <caret line="319" column="17" lean-forward="false" selection-start-line="319" selection-start-column="17" selection-end-line="319" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -493,13 +500,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-322">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scripts/component/navbar/navbar.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5423">
-          <caret line="319" column="17" lean-forward="false" selection-start-line="319" selection-start-column="17" selection-end-line="319" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -815,8 +815,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scripts/scoreboard/scoreboard.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="26" lean-forward="true" selection-start-line="0" selection-start-column="26" selection-end-line="0" selection-end-column="26" />
+        <state relative-caret-position="187">
+          <caret line="11" column="52" lean-forward="true" selection-start-line="11" selection-start-column="52" selection-end-line="11" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scripts/component/navbar/navbar.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding />
         </state>
       </provider>
