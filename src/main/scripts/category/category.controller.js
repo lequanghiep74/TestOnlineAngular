@@ -4,7 +4,7 @@
 'use strict';
 
 angular.module('myApp')
-    .controller('AccountController', function ($scope) {
+    .controller('CategoryController', function ($scope) {
         $scope.status = {
             step: 1
         };
