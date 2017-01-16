@@ -27,6 +27,8 @@
 
     <!-- include: "type": "js", "files": "scripts/**/*.js" -->
     <script src="scripts/app.js"></script>
+    <script src="scripts/token/token.controller.js"></script>
+    <script src="scripts/token/token.state.js"></script>
     <script src="scripts/user_account/account.controller.js"></script>
     <script src="scripts/user_account/account.state.js"></script>
     <!-- /include -->
@@ -58,9 +60,11 @@
 </head>
 <body class="no-skin">
 <div ui-view="navbar"></div>
-<div ui-view="sidebar"></div>
-<div ui-view="content"></div>
-<div ui-view="footer"></div>
+<div class="main-container ace-save-state" id="main-container">
+    <div ui-view="sidebar"></div>
+    <div ui-view="content"></div>
+    <div ui-view="footer"></div>
+</div>
 
 
 <!-- ace settings handler -->

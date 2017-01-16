@@ -6,13 +6,13 @@
 angular.module('myApp')
     .config(function ($stateProvider) {
         $stateProvider
-            .state('account', {
+            .state('token', {
                 parent: 'site',
-                url: '/account',
+                url: '/token',
                 views: {
                     'content@': {
-                        templateUrl: 'scripts/user_account/account.html',
-                        controller: 'AccountController'
+                        templateUrl: 'scripts/token/token.html',
+                        controller: 'TokenController'
                     }
                 }
             });
