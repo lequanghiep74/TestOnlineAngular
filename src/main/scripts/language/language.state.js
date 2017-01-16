@@ -6,13 +6,13 @@
 angular.module('myApp')
     .config(function ($stateProvider) {
         $stateProvider
-            .state('class', {
+            .state('language', {
                 parent: 'site',
-                url: '/class',
+                url: '/language',
                 views: {
                     'content@': {
-                        templateUrl: 'scripts/class/class.html',
-                        controller: 'ClassController'
+                        templateUrl: 'scripts/language/language.html',
+                        controller: 'LanguageController'
                     }
                 }
             });

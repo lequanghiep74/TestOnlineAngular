@@ -4,7 +4,7 @@
 'use strict';
 
 angular.module('myApp')
-    .controller('ClassController', function ($scope) {
+    .controller('LanguageController', function ($scope) {
         $scope.status = {
             step: 1
         };
