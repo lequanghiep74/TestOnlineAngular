@@ -4,12 +4,94 @@
 'use strict';
 
 angular.module('myApp')
-    .controller('ClassController', function ($scope) {
+    .controller('ClassController', function ($scope, DataTable, Button, API_URL, DateUtils) {
         $scope.status = {
-            step: 1
+            step: 1,
+            select: [
+                {name: 'Not set', value: 'noteset'},
+                {name: 'True', value: "True"},
+                {name: 'False', value: "False"}
+            ]
         };
 
         $scope.changeView = function changeView(param) {
             $scope.status.step = param === 'back' ? $scope.status.step - 1 : $scope.status.step + 1;
+            if (param === 'back') {
+                $scope.class = {};
+            }
         };
+
+        $scope.saveClass = function saveClass() {
+
+        };
+
+        $scope.deleteClass = function deleteClass() {
+
+        };
+
+        $scope.edit = function (data) {
+            $scope.$apply(function () {
+                $scope.changeView();
+                $scope.class = data;
+            });
+        };
+
+        var loadClassesList = function loadClassesList() {
+            var options = {
+                url: [API_URL, 'class/fetch'].join(''),
+                columns: [
+                    {'title': 'ID', 'data': null},
+                    {'title': 'Name', 'data': 'name'},
+                    {'title': 'Code', 'data': 'code'},
+                    {'title': 'Start Date', 'data': 'startDate'},
+                    {'title': 'End Date', 'data': 'endDate'},
+                    {'title': 'Semester', 'data': 'semester'},
+                    {'title': 'Class Year', 'data': 'classYear'},
+                    {'title': 'Status', 'data': 'status'},
+                    {'title': 'Email', 'data': 'email'},
+                    {'': ''}
+                ],
+                columnDefs: [
+                    {
+                        "render": function (data) {
+                            return DateUtils.convertMilToDateTime(data);
+                        },
+                        "targets": 3
+                    },
+                    {
+                        "render": function (data) {
+                            return DateUtils.convertMilToDateTime(data);
+                        },
+                        "targets": 4
+                    },
+                    {
+                        "render": function () {
+                            return Button.groupButton([Button.editButton(), Button.deleteButton()]);
+                        },
+                        "targets": -1
+                    },
+                    {
+                        "render": function (data) {
+                            var className = data === 'True' ? 'label-success' : 'label-danger';
+                            return ['<span class="label label-sm ', className, '">', data, '</span>'].join('');
+                        },
+                        "targets": -3
+                    }
+                ]
+            };
+
+            options.delete = function (data) {
+                $scope.deleteClass(data);
+            };
+            options.edit = function (data) {
+                $scope.edit(data);
+            };
+            DataTable.generateDataTable(options, angular.element(document.querySelector('#classDataTable')));
+        };
+
+        $scope.$on('$includeContentLoaded', function (obj, url) {
+            if (url === 'scripts/class/class.list.template.html') {
+                loadClassesList();
+            }
+        });
     });
