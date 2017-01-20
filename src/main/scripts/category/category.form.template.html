@@ -8,22 +8,20 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label no-padding-right">Name</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" placeholder="Name">
+                        <input type="text" class="form-control" ng-model="category.name" placeholder="Name">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label no-padding-right">Code</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" placeholder="Code">
+                        <input type="text" class="form-control" ng-model="category.code" placeholder="Code">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label no-padding-right">Status</label>
                     <div class="col-sm-4">
-                        <select class="form-control" id="status">
-                            <option value="notset">Not set</option>
-                            <option value="true">True</option>
-                            <option value="false">False</option>
+                        <select class="form-control" id="status" ng-model="category.status">
+                            <option ng-repeat="status in status.select" value="{{status.value}}">{{status.name}}</option>
                         </select>
                     </div>
                 </div>

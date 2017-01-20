@@ -6,11 +6,19 @@
 angular.module('myApp')
     .controller('CategoryController', function ($scope, DataTable, Button, API_URL) {
         $scope.status = {
-            step: 1
+            step: 1,
+            select: [
+                {name: 'Not set', value: 'noteset'},
+                {name: 'True', value: "True"},
+                {name: 'False', value: "False"}
+            ]
         };
 
         $scope.changeView = function changeView(param) {
             $scope.status.step = param === 'back' ? $scope.status.step - 1 : $scope.status.step + 1;
+            if (param === 'back') {
+                $scope.category = {};
+            }
         };
 
         $scope.saveCategory = function saveCategory() {
@@ -64,8 +72,8 @@ angular.module('myApp')
                     },
                     {
                         "render": function (data) {
-                            var className = data ? 'label-success' : 'label-danger';
-                            return ['<span class="label label-sm ', className, '">', data.toString().toUpperCase(), '</span>'].join('');
+                            var className = data === 'True' ? 'label-success' : 'label-danger';
+                            return ['<span class="label label-sm ', className, '">', data, '</span>'].join('');
                         },
                         "targets": -2
                     }
