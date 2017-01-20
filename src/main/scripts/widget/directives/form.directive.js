@@ -40,4 +40,29 @@ angular.module('myApp')
                 }
             }
         }
+    })
+    .directive('dateTimePicker', function () {
+        return {
+            restrict: 'A',
+            link: function (scope, element) {
+                if (!ace.vars['old_ie']) {
+                    element.datetimepicker({
+                        format: 'dd/MM/yyyy',//use this option to display seconds
+                        icons: {
+                            time: 'fa fa-clock-o',
+                            date: 'fa fa-calendar',
+                            up: 'fa fa-chevron-up',
+                            down: 'fa fa-chevron-down',
+                            previous: 'fa fa-chevron-left',
+                            next: 'fa fa-chevron-right',
+                            today: 'fa fa-arrows ',
+                            clear: 'fa fa-trash',
+                            close: 'fa fa-times'
+                        }
+                    }).next().on(ace.click_event, function () {
+                        $(this).prev().focus();
+                    });
+                }
+            }
+        }
     });
