@@ -8,7 +8,7 @@ angular.module('myApp')
         $stateProvider
             .state('token', {
                 parent: 'site',
-                url: '/token',
+                url: '/token/{type}',
                 views: {
                     'content@': {
                         templateUrl: 'scripts/token/token.html',
