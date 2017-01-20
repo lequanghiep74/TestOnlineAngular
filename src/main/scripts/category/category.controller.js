@@ -49,6 +49,7 @@ angular.module('myApp')
             var options = {
                 url: [API_URL, 'category/fetch'].join(''),
                 columns: [
+                    {'title': 'ID', 'data': null},
                     {'title': 'Name', 'data': 'name'},
                     {'title': 'Code', 'data': 'code'},
                     {'title': 'Status', 'data': 'status'},
@@ -60,6 +61,13 @@ angular.module('myApp')
                             return Button.groupButton([Button.editButton(), Button.deleteButton()]);
                         },
                         "targets": -1
+                    },
+                    {
+                        "render": function (data) {
+                            var className = data ? 'label-success' : 'label-danger';
+                            return ['<span class="label label-sm ', className, '">', data.toString().toUpperCase(), '</span>'].join('');
+                        },
+                        "targets": -2
                     }
                 ]
 
