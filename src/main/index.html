@@ -14,15 +14,27 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/datatables.net-dt/css/jquery.dataTables.css" />
+    <link rel="stylesheet" href="bower_components/datatables.net-buttons-dt/css/buttons.dataTables.css" />
+    <link rel="stylesheet" href="bower_components/sweetalert/dist/sweetalert.css" />
+    <link rel="stylesheet" href="bower_components/datatables.net-select-dt/css/select.dataTables.css" />
     <!-- endbower -->
 
     <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-loader/angular-loader.js"></script>
     <script src="bower_components/angular-mocks/angular-mocks.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/datatables.net/js/jquery.dataTables.js"></script>
+    <script src="bower_components/datatables.net-buttons/js/dataTables.buttons.js"></script>
+    <script src="bower_components/datatables.net-buttons/js/buttons.colVis.js"></script>
+    <script src="bower_components/datatables.net-buttons/js/buttons.flash.js"></script>
+    <script src="bower_components/datatables.net-buttons/js/buttons.html5.js"></script>
+    <script src="bower_components/datatables.net-buttons/js/buttons.print.js"></script>
+    <script src="bower_components/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="bower_components/angular-sweetalert/SweetAlert.js"></script>
+    <script src="bower_components/datatables.net-select/js/dataTables.select.js"></script>
     <!-- endbower -->
 
     <!-- include: "type": "js", "files": "scripts/**/*.js" -->
@@ -43,6 +55,9 @@
     <script src="scripts/token/token.state.js"></script>
     <script src="scripts/user_account/account.controller.js"></script>
     <script src="scripts/user_account/account.state.js"></script>
+    <script src="scripts/widget/app.constant.js"></script>
+    <script src="scripts/widget/button.widget.js"></script>
+    <script src="scripts/widget/datatable.widget.js"></script>
     <!-- /include -->
 
     <!-- bootstrap & fontawesome -->
@@ -91,14 +106,6 @@
 
 <!-- basic scripts -->
 
-<!--[if !IE]> -->
-<script src="assets/js/jquery-2.1.4.min.js"></script>
-
-<!-- <![endif]-->
-
-<!--[if IE]>
-<script src="assets/js/jquery-1.11.3.min.js"></script>
-<![endif]-->
 <script type="text/javascript">
     if ('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
 </script>
@@ -111,21 +118,8 @@
 <![endif]-->
 <script src="assets/js/jquery-ui.custom.min.js"></script>
 <script src="assets/js/jquery.ui.touch-punch.min.js"></script>
-<script src="assets/js/jquery.easypiechart.min.js"></script>
-<script src="assets/js/jquery.sparkline.index.min.js"></script>
 <script src="assets/js/jquery.flot.min.js"></script>
-<script src="assets/js/jquery.flot.pie.min.js"></script>
 <script src="assets/js/jquery.flot.resize.min.js"></script>
-
-<!-- page specific plugin scripts -->
-<script src="assets/js/jquery.dataTables.min.js"></script>
-<script src="assets/js/jquery.dataTables.bootstrap.min.js"></script>
-<script src="assets/js/dataTables.buttons.min.js"></script>
-<script src="assets/js/buttons.flash.min.js"></script>
-<script src="assets/js/buttons.html5.min.js"></script>
-<script src="assets/js/buttons.print.min.js"></script>
-<script src="assets/js/buttons.colVis.min.js"></script>
-<script src="assets/js/dataTables.select.min.js"></script>
 
 <!-- ace scripts -->
 <script src="assets/js/ace-elements.min.js"></script>

@@ -4,7 +4,7 @@
 'use strict';
 
 angular.module('myApp')
-    .controller('CategoryController', function ($scope) {
+    .controller('CategoryController', function ($scope, DataTable, Button, API_URL) {
         $scope.status = {
             step: 1
         };
@@ -13,65 +13,70 @@ angular.module('myApp')
             $scope.status.step = param === 'back' ? $scope.status.step - 1 : $scope.status.step + 1;
         };
 
-        // $scope.saveCategory = function () {
-        //     var method = $scope.category._id ? CategoriesService.updateCategory : CategoriesService.saveCategory;
-        //
-        //     method.call(null, $scope.category)
-        //         .then(function () {
-        //
-        //             alert("Thành công");
-        //             $scope.toggle();
-        //         })
-        //         .catch(function (err) {
-        //             alert(err.toString());
-        //         });
-        // };
-        //
-        // $scope.delete = function (data) {
-        //     CategoriesService.deleteCategory(data._id)
-        //         .then(function () {
-        //             alert("Thành công");
-        //             angular.element('#datatable').DataTable().ajax.reload(null, false);
-        //         })
-        //         .catch(function (err) {
-        //             alert(err.toString());
-        //         });
-        // };
-        //
-        // $scope.edit = function (data) {
-        //     $scope.$apply(function () {
-        //         $scope.toggle();
-        //         $scope.category = data;
-        //     });
-        // };
-        //
-        // var loadCategoriesList = function () {
-        //     var options = {
-        //         url: [API_URL, 'category/fetch'].join(''),
-        //         columns: [
-        //             {'title': 'ID', 'data': null},
-        //             {'title': 'CODE', 'data': 'code'},
-        //             {'title': 'NAME', 'data': 'name'},
-        //             {'': ''}
-        //         ],
-        //         columnDefs: [
-        //             {
-        //                 "render": function () {
-        //                     return '<button class="btn btn-info" id="command-edit">Edit</button>' +
-        //                         '<button class="btn btn-danger" id="command-delete">Delete</button>';
-        //                 },
-        //                 "targets": -1
-        //             }
-        //         ]
-        //
-        //     };
-        //
-        //     options.delete = function (data) {
-        //         $scope.delete(data);
-        //     };
-        //     options.edit = function (data) {
-        //         $scope.edit(data);
-        //     };
-        //     DataTable.generateDataTable(options, angular.element('#datatable'));
-        // };
+        $scope.saveCategory = function saveCategory() {
+            // var method = $scope.category._id ? CategoriesService.updateCategory : CategoriesService.saveCategory;
+            //
+            // method.call(null, $scope.category)
+            //     .then(function () {
+            //
+            //         alert("Thành công");
+            //         $scope.toggle();
+            //     })
+            //     .catch(function (err) {
+            //         alert(err.toString());
+            //     });
+        };
+
+        $scope.deleteCategory = function deleteCategory(data) {
+            // CategoriesService.deleteCategory(data._id)
+            //     .then(function () {
+            //         alert("Thành công");
+            //         angular.element('#datatable').DataTable().ajax.reload(null, false);
+            //     })
+            //     .catch(function (err) {
+            //         alert(err.toString());
+            //     });
+        };
+
+        $scope.edit = function (data) {
+            $scope.$apply(function () {
+                $scope.changeView();
+                $scope.category = data;
+            });
+        };
+
+        var loadCategoriesList = function loadCategoriesList() {
+            var options = {
+                url: [API_URL, 'category/fetch'].join(''),
+                columns: [
+                    {'title': 'Name', 'data': 'name'},
+                    {'title': 'Code', 'data': 'code'},
+                    {'title': 'Status', 'data': 'status'},
+                    {'': ''}
+                ],
+                columnDefs: [
+                    {
+                        "render": function () {
+                            return Button.groupButton([Button.editButton(), Button.deleteButton()]);
+                        },
+                        "targets": -1
+                    }
+                ]
+
+            };
+
+            options.delete = function (data) {
+                $scope.deleteCategory(data);
+            };
+            options.edit = function (data) {
+                $scope.edit(data);
+            };
+            DataTable.generateDataTable(options, angular.element(document.querySelector('#categoryDataTable')));
+        };
+
+        $scope.$on('$includeContentLoaded', function (obj, url) {
+            if (url === 'scripts/category/category.list.template.html') {
+                loadCategoriesList();
+            }
+        });
     });

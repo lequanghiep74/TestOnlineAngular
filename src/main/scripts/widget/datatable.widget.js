@@ -2,9 +2,8 @@
  * Created by PC on 9/17/2016.
  */
 angular.module('myApp')
-    .service('DataTable', function ($localStorage) {
+    .service('DataTable', function () {
         this.generateDataTable = function (options, element) {
-            var token = $localStorage.token;
             if (!options.columnDefs) {
                 options.columnDefs = [];
             }
@@ -16,10 +15,7 @@ angular.module('myApp')
 
             var table = element.DataTable({
                 'ajax': {
-                    'url': options.url,
-                    "beforeSend": function (xhr) {
-                        xhr.setRequestHeader("Authorization", token);
-                    }
+                    'url': options.url
                 },
                 'columns': options.columns,
                 'columnDefs': options.columnDefs
