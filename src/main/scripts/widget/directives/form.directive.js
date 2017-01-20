@@ -65,4 +65,12 @@ angular.module('myApp')
                 }
             }
         }
+    })
+    .directive('inputMask', function () {
+        return {
+            restrict: 'A',
+            link: function (scope, element, attr) {
+                element.mask(attr.inputMask);
+            }
+        }
     });

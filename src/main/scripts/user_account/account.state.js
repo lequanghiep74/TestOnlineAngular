@@ -8,7 +8,7 @@ angular.module('myApp')
         $stateProvider
             .state('account', {
                 parent: 'site',
-                url: '/account',
+                url: '/account/{type}',
                 views: {
                     'content@': {
                         templateUrl: 'scripts/user_account/account.html',

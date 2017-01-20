@@ -4,12 +4,79 @@
 'use strict';
 
 angular.module('myApp')
-    .controller('AccountController', function ($scope) {
+    .controller('AccountController', function ($scope, $stateParams, StringUtils, API_URL, Button, DateUtils, DataTable) {
         $scope.status = {
-            step: 1
+            step: 1,
+            type: $stateParams.type
         };
+        $scope.title = StringUtils.capitalize($scope.status.type);
 
         $scope.changeView = function changeView(param) {
             $scope.status.step = param === 'back' ? $scope.status.step - 1 : $scope.status.step + 1;
+            if (param === 'back') {
+                $scope.account = {};
+            }
         };
+
+        $scope.saveAccount = function saveAccount() {
+
+        };
+
+        $scope.deleteAccount = function deleteAccount() {
+
+        };
+
+        $scope.edit = function (data) {
+            $scope.$apply(function () {
+                $scope.changeView();
+                $scope.account = data;
+                $scope.account.dateOfBirth = DateUtils.convertMilToDate($scope.account.dateOfBirth);
+            });
+        };
+
+        var loadAccountsList = function loadAccountsList() {
+            var options = {
+                url: [API_URL, 'account/fetch'].join(''),
+                columns: [
+                    {'title': 'ID', 'data': null},
+                    {'title': 'Fullname', 'data': 'fullname'},
+                    {'title': 'Username', 'data': 'username'},
+                    {'title': 'Email', 'data': 'email'},
+                    {'title': 'Phone Number', 'data': 'phoneNumber'},
+                    {'title': 'Student Id', 'data': 'studentId'},
+                    {'title': 'Class Name', 'data': 'className'},
+                    {'title': 'Date Of Birth', 'data': 'dateOfBirth'},
+                    {'title': 'Gender', 'data': 'gender'},
+                    {'': ''}
+                ],
+                columnDefs: [
+                    {
+                        "render": function () {
+                            return Button.groupButton([Button.editButton(), Button.deleteButton()]);
+                        },
+                        "targets": -1
+                    },
+                    {
+                        "render": function (data) {
+                            return DateUtils.convertMilToDate(data);
+                        },
+                        "targets": -3
+                    }
+                ]
+            };
+
+            options.delete = function (data) {
+                $scope.deleteAccount(data);
+            };
+            options.edit = function (data) {
+                $scope.edit(data);
+            };
+            DataTable.generateDataTable(options, angular.element(document.querySelector('#accountDataTable')));
+        };
+
+        $scope.$on('$includeContentLoaded', function (obj, url) {
+            if (url === 'scripts/user_account/account.list.template.html') {
+                loadAccountsList();
+            }
+        });
     });
