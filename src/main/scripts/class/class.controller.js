@@ -4,7 +4,7 @@
 'use strict';
 
 angular.module('myApp')
-    .controller('ClassController', function ($scope, DataTable, Button, API_URL, DateUtils) {
+    .controller('ClassController', function ($scope, DataTable, Button, API_URL, DateUtils, TeacherService, CategoryService) {
         $scope.status = {
             step: 1,
             select: [
@@ -19,6 +19,10 @@ angular.module('myApp')
             if (param === 'back') {
                 $scope.class = {};
             }
+            if (param === 'create') {
+                $scope.fetchListTeacher();
+                $scope.fetchListCategories();
+            }
         };
 
         $scope.saveClass = function saveClass() {
@@ -29,10 +33,30 @@ angular.module('myApp')
 
         };
 
+        $scope.fetchListTeacher = function fetchListTeacher() {
+            TeacherService.fetchAllTeacher().then(onFetchListTeachersSuccess.bind(null));
+        };
+
+        var onFetchListTeachersSuccess = function onFetchListTeachersSuccess(res) {
+            $scope.teachers = res.data || [];
+        };
+
+        $scope.fetchListCategories = function fetchListCategories() {
+            CategoryService.fetchAllCategories().then(onFetchListCategoriesSuccess.bind(null));
+        };
+
+        var onFetchListCategoriesSuccess = function onFetchListCategoriesSuccess(res) {
+            $scope.categories = res.data || [];
+        };
+
         $scope.edit = function (data) {
             $scope.$apply(function () {
                 $scope.changeView();
+                $scope.fetchListTeacher();
+                $scope.fetchListCategories();
                 $scope.class = data;
+                $scope.class.startDate = DateUtils.convertMilToDate($scope.class.startDate);
+                $scope.class.endDate = DateUtils.convertMilToDate($scope.class.endDate);
             });
         };
 
@@ -54,13 +78,13 @@ angular.module('myApp')
                 columnDefs: [
                     {
                         "render": function (data) {
-                            return DateUtils.convertMilToDateTime(data);
+                            return DateUtils.convertMilToDate(data);
                         },
                         "targets": 3
                     },
                     {
                         "render": function (data) {
-                            return DateUtils.convertMilToDateTime(data);
+                            return DateUtils.convertMilToDate(data);
                         },
                         "targets": 4
                     },

@@ -8,19 +8,20 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label no-padding-right">Name</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" placeholder="Name">
+                        <input type="text" class="form-control" ng-model="class.name" placeholder="Name">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label no-padding-right">Code</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" placeholder="Code">
+                        <input type="text" class="form-control" ng-model="class.code" placeholder="Code">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label no-padding-right">Start date</label>
                     <div class="input-group col-sm-4">
                         <input class="form-control date-picker" id="startdate"
+                               ng-model="class.startDate"
                                type="text" data-date-format="DD/MM/YYYY">
                         <span class="input-group-addon">
 																		<i class="fa fa-calendar bigger-110"></i>
@@ -31,6 +32,7 @@
                     <label class="col-sm-2 control-label no-padding-right">End date</label>
                     <div class="input-group col-sm-4">
                         <input class="form-control date-picker" id="enddate"
+                               ng-model="class.endDate"
                                type="text" data-date-format="DD/MM/YYYY">
                         <span class="input-group-addon">
 																		<i class="fa fa-calendar bigger-110"></i>
@@ -40,13 +42,13 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label no-padding-right">Semester</label>
                     <div class="col-sm-4">
-                        <input type="Number" class="form-control" value="1" min="1">
+                        <input type="Number" class="form-control" value="1" ng-model="class.semester" min="1">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label no-padding-right">Class year</label>
                     <div class="col-sm-4">
-                        <input type="number" class="form-control" placeholder="Class year">
+                        <input type="number" class="form-control" ng-model="class.classYear" placeholder="Class year">
                     </div>
                 </div>
                 <div class="form-group">
@@ -54,10 +56,7 @@
                     <div class="col-sm-4">
                         <select class="chosen-select form-control"
                                 data-placeholder="Choose a teacher">
-                            <option value=""></option>
-                            <option value="AL">Alabama</option>
-                            <option value="AK">Alaska</option>
-                            <option value="AZ">Arizona</option>
+                            <option ng-repeat="teacher in teachers" value="{{teacher.id}}">{{teacher.name}}</option>
                         </select>
                     </div>
                 </div>
@@ -66,20 +65,15 @@
                     <div class="col-sm-4">
                         <select multiple="" class="chosen-select form-control"
                                 id="form-field-select-4" data-placeholder="Choose a categories">
-                            <option value="AL">Alabama</option>
-                            <option value="AK">Alaska</option>
-                            <option value="AZ">Arizona</option>
-                            <option value="AR">Arkansas</option>
+                            <option ng-repeat="category in categories" value="{{category.id}}" multi-select>{{category.name}}</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label no-padding-right">Status</label>
                     <div class="col-sm-4">
-                        <select class="form-control" id="status">
-                            <option value="notset">Not set</option>
-                            <option value="true">True</option>
-                            <option value="false">False</option>
+                        <select class="form-control" id="status" ng-model="class.status">
+                            <option ng-repeat="status in status.select" value="{{status.value}}">{{status.name}}</option>
                         </select>
                     </div>
                 </div>
