@@ -8,6 +8,7 @@ angular.module('myApp')
         return {
             deleteButton: deleteButton,
             editButton: editButton,
+            viewButton: viewButton,
             groupButton: groupButton
         };
 
@@ -17,6 +18,10 @@ angular.module('myApp')
 
         function editButton() {
             return '<a class="green" id="command-edit"><i class="ace-icon fa fa-pencil bigger-130"></i></a>';
+        }
+
+        function viewButton() {
+            return '<a class="blue" id="command-view"><i class="ace-icon fa fa-search bigger-130"></i></a>';
         }
 
         function groupButton(buttons) {

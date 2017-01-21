@@ -65,7 +65,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label no-padding-right">Categories</label>
                     <div class="col-sm-4">
-                        <select multiple="" class="chosen-select form-control"
+                        <select multiple="" class="chosen-select form-control" ng-model="class.categories"
                                 id="form-field-select-4" data-placeholder="Choose a categories">
                             <option ng-repeat="category in categories" value="{{category.id}}" multi-select>{{category.name}}</option>
                         </select>

@@ -2,7 +2,7 @@
 
 angular.module('myApp', ['ui.router'])
     .config(function ($urlRouterProvider, $stateProvider) {
-        $urlRouterProvider.otherwise('/account');
+        $urlRouterProvider.otherwise('/dashboard');
 
         $stateProvider
             .state('site', {

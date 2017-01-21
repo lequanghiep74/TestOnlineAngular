@@ -36,6 +36,12 @@ angular.module('myApp')
                 var obj = table.row($(this).parents('tr')).data();
                 options.edit.call(null, obj);
             });
+
+            element.on('click', '#command-view', function () {
+                var obj = table.row($(this).parents('tr')).data();
+                options.view.call(null, obj);
+            });
+
             element.on('click', '#command-islock', function () {
                 var obj = table.row($(this).parents('tr')).data();
                 options.islock.call(null, obj);
