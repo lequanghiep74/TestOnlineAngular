@@ -4,7 +4,7 @@
 'use strict';
 
 angular.module('myApp')
-    .controller('CategoryController', function ($scope, DataTable, Button, API_URL) {
+    .controller('CategoryController', function ($scope, DataTable, Button, API_URL, Dialog, CategoryService) {
         $scope.status = {
             step: 1,
             select: [
@@ -35,15 +35,13 @@ angular.module('myApp')
             //     });
         };
 
-        $scope.deleteCategory = function deleteCategory(data) {
-            // CategoriesService.deleteCategory(data._id)
-            //     .then(function () {
-            //         alert("Thành công");
-            //         angular.element('#datatable').DataTable().ajax.reload(null, false);
-            //     })
-            //     .catch(function (err) {
-            //         alert(err.toString());
-            //     });
+        var reloadListCategory = function reloadListCategory() {
+            angular.element(document.querySelector('#categoryDataTable')).DataTable().ajax.reload(null, false);
+        };
+
+        $scope.deleteCategory = function deleteCategory(id) {
+            Dialog.deleteDialog('Do you want delete this category?', CategoryService.deleteCategory.bind(null, id)
+                , reloadListCategory.bind(null));
         };
 
         $scope.edit = function (data) {

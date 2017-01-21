@@ -4,7 +4,8 @@
 'use strict';
 
 angular.module('myApp')
-    .controller('TokenController', function ($scope, $stateParams, StringUtils, API_URL, Button, DateUtils, DataTable) {
+    .controller('TokenController', function ($scope, $stateParams, StringUtils, API_URL, Button, DateUtils
+        , DataTable, Dialog, TokenService) {
         $scope.status = {
             step: 1,
             type: $stateParams.type
@@ -22,8 +23,13 @@ angular.module('myApp')
 
         };
 
-        $scope.deleteToken = function deleteToken() {
+        var reloadListToken = function reloadListToken() {
+            angular.element(document.querySelector('#tokenDataTable')).DataTable().ajax.reload(null, false);
+        };
 
+        $scope.deleteToken = function deleteToken(id) {
+            Dialog.deleteDialog('Do you want delete this token?', TokenService.deleteToken.bind(null, id)
+                , reloadListToken.bind(null));
         };
 
         $scope.edit = function (data) {

@@ -4,7 +4,8 @@
 'use strict';
 
 angular.module('myApp')
-    .controller('AccountController', function ($scope, $stateParams, StringUtils, API_URL, Button, DateUtils, DataTable) {
+    .controller('AccountController', function ($scope, $stateParams, StringUtils, API_URL, Button, DateUtils
+        , DataTable, Dialog, AccountService) {
         $scope.status = {
             step: 1,
             type: $stateParams.type
@@ -22,8 +23,13 @@ angular.module('myApp')
 
         };
 
-        $scope.deleteAccount = function deleteAccount() {
+        var reloadListAccount = function reloadListAccount() {
+            angular.element(document.querySelector('#accountDataTable')).DataTable().ajax.reload(null, false);
+        };
 
+        $scope.deleteAccount = function deleteAccount(id) {
+            Dialog.deleteDialog('Do you want delete this class?', AccountService.deleteAccount.bind(null, id)
+                , reloadListAccount.bind(null));
         };
 
         $scope.edit = function (data) {

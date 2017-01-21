@@ -8,10 +8,15 @@ angular.module('myApp')
         var category = 'list';
 
         return {
-            fetchAllCategories: fetchAllCategories
+            fetchAllCategories: fetchAllCategories,
+            deleteCategory: deleteCategory
         };
 
         function fetchAllCategories() {
             return $http.get([API_URL, category, '/fetch/all'].join(''));
+        }
+
+        function deleteCategory() {
+            return $http.get([API_URL, 'delete'].join(''));
         }
     });

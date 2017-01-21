@@ -4,7 +4,8 @@
 'use strict';
 
 angular.module('myApp')
-    .controller('ClassController', function ($scope, DataTable, Button, API_URL, DateUtils, TeacherService, CategoryService) {
+    .controller('ClassController', function ($scope, DataTable, Button, API_URL, DateUtils, AccountService
+        , CategoryService, ClassService, Dialog) {
         $scope.status = {
             step: 1,
             select: [
@@ -29,12 +30,17 @@ angular.module('myApp')
 
         };
 
-        $scope.deleteClass = function deleteClass() {
+        var reloadListClass = function reloadListClass() {
+            angular.element(document.querySelector('#classDataTable')).DataTable().ajax.reload(null, false);
+        };
 
+        $scope.deleteClass = function deleteClass(id) {
+            Dialog.deleteDialog('Do you want delete this class?', ClassService.deleteClass.bind(null, id)
+                , reloadListClass.bind(null));
         };
 
         $scope.fetchListTeacher = function fetchListTeacher() {
-            TeacherService.fetchAllTeacher().then(onFetchListTeachersSuccess.bind(null));
+            AccountService.fetchAllTeacher().then(onFetchListTeachersSuccess.bind(null));
         };
 
         var onFetchListTeachersSuccess = function onFetchListTeachersSuccess(res) {
