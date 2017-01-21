@@ -37,7 +37,7 @@
     </div><!-- /.sidebar-shortcuts -->
 
     <ul class="nav nav-list">
-        <li class="active">
+        <li ng-class="{active: state.name === 'dashboard'}">
             <a ui-sref="dashboard">
                 <i class="menu-icon fa fa-tachometer"></i>
                 <span class="menu-text"> Dashboard </span>
@@ -46,7 +46,7 @@
             <b class="arrow"></b>
         </li>
 
-        <li class="">
+        <li ng-class="{open: state.name === 'account'}">
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-user"></i>
                 <span class="menu-text">
@@ -59,7 +59,7 @@
             <b class="arrow"></b>
 
             <ul class="submenu">
-                <li class="">
+                <li ng-class="{active: state.url === '#/account/student'}">
                     <a ui-sref="account({type: 'student'})">
                         <i class="menu-icon fa fa-caret-right"></i>
                         Student
@@ -68,7 +68,7 @@
                     <b class="arrow"></b>
                 </li>
 
-                <li class="">
+                <li ng-class="{active: state.url === '#/account/teacher'}">
                     <a ui-sref="account({type: 'teacher'})">
                         <i class="menu-icon fa fa-caret-right"></i>
                         Teacher
@@ -77,7 +77,7 @@
                     <b class="arrow"></b>
                 </li>
 
-                <li class="">
+                <li ng-class="{active: state.url === '#/account/admin'}">
                     <a ui-sref="account({type: 'admin'})">
                         <i class="menu-icon fa fa-caret-right"></i>
                         Admin
@@ -88,7 +88,7 @@
             </ul>
         </li>
 
-        <li class="">
+        <li ng-class="{open: state.name === 'token'}">
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-key"></i>
                 <span class="menu-text"> Token Key </span>
@@ -99,7 +99,7 @@
             <b class="arrow"></b>
 
             <ul class="submenu">
-                <li class="">
+                <li ng-class="{active: state.url === '#/token/available'}">
                     <a ui-sref="token({type: 'available'})">
                         <i class="menu-icon fa fa-caret-right"></i>
                         Available
@@ -108,7 +108,7 @@
                     <b class="arrow"></b>
                 </li>
 
-                <li class="">
+                <li ng-class="{active: state.url === '#/token/non'}">
                     <a ui-sref="token({type: 'non'})">
                         <i class="menu-icon fa fa-caret-right"></i>
                         Non Available
@@ -119,28 +119,28 @@
             </ul>
         </li>
 
-        <li class="">
+        <li ng-class="{active: state.name === 'setting'}">
             <a ui-sref="setting">
                 <i class="menu-icon fa fa-cog"></i>
                 <span class="menu-text"> Setting </span>
             </a>
         </li>
 
-        <li class="">
+        <li ng-class="{active: state.name === 'class'}">
             <a ui-sref="class">
                 <i class="menu-icon fa fa-users"></i>
                 <span class="menu-text"> Classes </span>
             </a>
         </li>
 
-        <li class="">
+        <li ng-class="{active: state.name === 'category'}">
             <a ui-sref="category">
                 <i class="menu-icon fa fa-book"></i>
                 <span class="menu-text"> Categories </span>
             </a>
         </li>
 
-        <li class="">
+        <li ng-class="{open: state.name === 'problem'}">
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-question-circle"></i>
                 <span class="menu-text"> Problems </span>
@@ -151,7 +151,7 @@
             <b class="arrow"></b>
 
             <ul class="submenu">
-                <li class="">
+                <li ng-class="{active: state.name === 'problem'}">
                     <a ui-sref="problem">
                         <i class="menu-icon fa fa-caret-right"></i>
                         Problems
@@ -162,14 +162,14 @@
             </ul>
         </li>
 
-        <li class="">
+        <li ng-class="{active: state.name === 'language'}">
             <a ui-sref="language">
                 <i class="menu-icon fa fa-language"></i>
                 <span class="menu-text"> Languages </span>
             </a>
         </li>
 
-        <li class="">
+        <li ng-class="{active: state.name === 'scoreboard'}">
             <a ui-sref="scoreboard">
                 <i class="menu-icon fa fa-table"></i>
                 <span class="menu-text"> User Scoreboard </span>

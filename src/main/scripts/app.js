@@ -11,7 +11,8 @@ angular.module('myApp', ['ui.router'])
                         templateUrl: 'scripts/component/navbar/navbar.html'
                     },
                     'sidebar@': {
-                        templateUrl: 'scripts/component/sidebar/sidebar.html'
+                        templateUrl: 'scripts/component/sidebar/sidebar.html',
+                        controller: 'SidebarController'
                     },
                     'footer@': {
                         templateUrl: 'scripts/component/footer/footer.html'

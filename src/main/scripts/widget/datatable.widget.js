@@ -1,6 +1,8 @@
 /**
  * Created by PC on 9/17/2016.
  */
+'use strict';
+
 angular.module('myApp')
     .service('DataTable', function () {
         this.generateDataTable = function (options, element) {
