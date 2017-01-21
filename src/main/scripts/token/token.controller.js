@@ -11,6 +11,7 @@ angular.module('myApp')
             type: $stateParams.type
         };
         $scope.title = $scope.status.type === 'available' ? 'Available' : 'Non Available';
+        $scope.token = {};
 
         $scope.changeView = function changeView(param) {
             $scope.status.step = param === 'back' ? $scope.status.step - 1 : $scope.status.step + 1;
@@ -20,7 +21,10 @@ angular.module('myApp')
         };
 
         $scope.saveToken = function saveToken() {
-
+            var method = $scope.token.id ? TokenService.updateToken : TokenService.saveToken;
+            method.call(null, $scope.token)
+                .then(Dialog.onSuccess.bind(null, 'Success', 'Save token success', $scope.changeView.bind(null, 'back')))
+                .catch(Dialog.onFailure.bind(null, 'Fail', 'Save token fail', null));
         };
 
         var reloadListToken = function reloadListToken() {

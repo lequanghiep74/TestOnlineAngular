@@ -13,6 +13,7 @@ angular.module('myApp')
                 {name: 'False', value: "False"}
             ]
         };
+        $scope.category = {};
 
         $scope.changeView = function changeView(param) {
             $scope.status.step = param === 'back' ? $scope.status.step - 1 : $scope.status.step + 1;
@@ -22,17 +23,10 @@ angular.module('myApp')
         };
 
         $scope.saveCategory = function saveCategory() {
-            // var method = $scope.category._id ? CategoriesService.updateCategory : CategoriesService.saveCategory;
-            //
-            // method.call(null, $scope.category)
-            //     .then(function () {
-            //
-            //         alert("Thành công");
-            //         $scope.toggle();
-            //     })
-            //     .catch(function (err) {
-            //         alert(err.toString());
-            //     });
+            var method = $scope.category.id ? CategoryService.updateCategory : CategoryService.saveCategory;
+            method.call(null, $scope.category)
+                .then(Dialog.onSuccess.bind(null, 'Success', 'Save category success', $scope.changeView.bind(null, 'back')))
+                .catch(Dialog.onFailure.bind(null, 'Fail', 'Save category fail', null));
         };
 
         var reloadListCategory = function reloadListCategory() {

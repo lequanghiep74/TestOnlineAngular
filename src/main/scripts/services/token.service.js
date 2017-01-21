@@ -8,10 +8,20 @@ angular.module('myApp')
         var token = 'list';
 
         return {
+            saveToken: saveToken,
+            updateToken: updateToken,
             deleteToken: deleteToken
         };
 
         function deleteToken() {
             return $http.get([API_URL, 'delete'].join(''));
+        }
+
+        function saveToken(data) {
+            return $http.post([API_URL, 'save'].join(''), data);
+        }
+
+        function updateToken(data) {
+            return $http.post([API_URL, 'save'].join(''), data);
         }
     });

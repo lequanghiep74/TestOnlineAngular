@@ -7,7 +7,9 @@ angular.module('myApp')
     .factory('Dialog', function () {
         return {
             showDialog: showDialog,
-            deleteDialog: deleteDialog
+            deleteDialog: deleteDialog,
+            onSuccess: onSuccess,
+            onFailure: onFailure
         };
 
         function onSuccess(title, content, callbackSuccess) {

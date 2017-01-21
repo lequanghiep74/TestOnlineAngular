@@ -11,6 +11,7 @@ angular.module('myApp')
             type: $stateParams.type
         };
         $scope.title = StringUtils.capitalize($scope.status.type);
+        $scope.account = {};
 
         $scope.changeView = function changeView(param) {
             $scope.status.step = param === 'back' ? $scope.status.step - 1 : $scope.status.step + 1;
@@ -20,7 +21,10 @@ angular.module('myApp')
         };
 
         $scope.saveAccount = function saveAccount() {
-
+            var method = $scope.account.id ? AccountService.updateAccount : AccountService.saveAccount;
+            method.call(null, $scope.account)
+                .then(Dialog.onSuccess.bind(null, 'Success', 'Save account success', $scope.changeView.bind(null, 'back')))
+                .catch(Dialog.onFailure.bind(null, 'Fail', 'Save account fail', null));
         };
 
         var reloadListAccount = function reloadListAccount() {

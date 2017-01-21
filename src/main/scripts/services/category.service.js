@@ -9,6 +9,8 @@ angular.module('myApp')
 
         return {
             fetchAllCategories: fetchAllCategories,
+            saveCategory: saveCategory,
+            updateCategory: updateCategory,
             deleteCategory: deleteCategory
         };
 
@@ -18,5 +20,13 @@ angular.module('myApp')
 
         function deleteCategory() {
             return $http.get([API_URL, 'delete'].join(''));
+        }
+
+        function saveCategory(data) {
+            return $http.post([API_URL, 'save'].join(''), data);
+        }
+
+        function updateCategory(data) {
+            return $http.post([API_URL, 'save'].join(''), data);
         }
     });

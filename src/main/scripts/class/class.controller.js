@@ -14,6 +14,7 @@ angular.module('myApp')
                 {name: 'False', value: "False"}
             ]
         };
+        $scope.class = {};
 
         $scope.changeView = function changeView(param) {
             $scope.status.step = param === 'back' ? $scope.status.step - 1 : $scope.status.step + 1;
@@ -27,7 +28,10 @@ angular.module('myApp')
         };
 
         $scope.saveClass = function saveClass() {
-
+            var method = $scope.class.id ? ClassService.updateClass : ClassService.saveClass;
+            method.call(null, $scope.class)
+                .then(Dialog.onSuccess.bind(null, 'Success', 'Save class success', $scope.changeView.bind(null, 'back')))
+                .catch(Dialog.onFailure.bind(null, 'Fail', 'Save class fail', null));
         };
 
         var reloadListClass = function reloadListClass() {

@@ -9,6 +9,8 @@ angular.module('myApp')
 
         return {
             fetchAllTeacher: fetchAllTeacher,
+            saveAccount: saveAccount,
+            updateAccount: updateAccount,
             deleteAccount: deleteAccount
         };
 
@@ -18,5 +20,13 @@ angular.module('myApp')
 
         function deleteAccount() {
             return $http.get([API_URL, 'delete'].join(''));
+        }
+
+        function saveAccount(data) {
+            return $http.post([API_URL, 'save'].join(''), data);
+        }
+
+        function updateAccount(data) {
+            return $http.post([API_URL, 'save'].join(''), data);
         }
     });

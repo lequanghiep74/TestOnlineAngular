@@ -8,10 +8,20 @@ angular.module('myApp')
         var classUrl = 'list';
 
         return {
+            saveClass: saveClass,
+            updateClass: updateClass,
             deleteClass: deleteClass
         };
 
         function deleteClass() {
             return $http.get([API_URL, 'delete'].join(''));
+        }
+        
+        function saveClass(data) {
+            return $http.post([API_URL, 'save'].join(''), data);
+        }
+
+        function updateClass(data) {
+            return $http.post([API_URL, 'save'].join(''), data);
         }
     });
