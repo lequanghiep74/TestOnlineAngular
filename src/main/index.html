@@ -14,7 +14,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/sweetalert/dist/sweetalert.css" />
+    <link rel="stylesheet" href="bower_components/sweetalert/dist/sweetalert.css"/>
     <!-- endbower -->
 
     <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -94,7 +94,9 @@
 <body class="no-skin">
 <div ui-view="navbar"></div>
 <div class="main-container ace-save-state" id="main-container">
-    <div ui-view="sidebar"></div>
+    <div id="sidebar" class="sidebar">
+        <div ui-view="sidebar"></div>
+    </div>
     <div ui-view="content"></div>
     <div ui-view="footer"></div>
 </div>
