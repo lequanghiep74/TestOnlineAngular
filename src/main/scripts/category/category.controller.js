@@ -20,7 +20,7 @@ angular.module('myApp')
             if (param === 'back') {
                 $scope.category = {};
             }
-        };
+        };sfasfasfsa
 
         $scope.saveCategory = function saveCategory() {
             var method = $scope.category.id ? CategoryService.updateCategory : CategoryService.saveCategory;
